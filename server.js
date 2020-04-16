@@ -1,9 +1,40 @@
 let express = require('express');
 let app = express();
 
+let petshop = [
+    {
+        id: 0,
+        brand: "Purina One",
+        name: "Purina One Indoor Advantage",
+        type: "FOOD",
+        price: 319
+
+    },
+    {
+        id: 1,
+        brand: "CATTOY",
+        name: "Kanimal Cat Teaser",
+        type: "TOY",
+        price: 89
+
+    },
+    {
+        id: 2,
+        brand: "Dental Fresh",
+        name: "Dental Fresh Original Formula for Cats",
+        type: "HEALTHY",
+        price: 280
+
+    }
+]
+
 app.get('/', (req, res) => {
-    console.log('Data Send!!')
-    res.send('Client Lab9')
+    console.log('Home Page !!')
+    res.send("Hello Home Page")
+});
+app.get('/petshop', (req, res) => {
+    console.log('Petshop Page !!')
+    res.json(petshop)
 });
 
 app.get('/crash', (req, res) => {
@@ -14,4 +45,5 @@ app.get('/crash', (req, res) => {
 
 })
 
-app.listen(80, () => console.log('Server running at PORT', 80));
+app.listen(process.env.PORT, 
+    () => console.log('Server running at PORT', process.env.PORT));
